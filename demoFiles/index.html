@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset=utf-8 />
+        <title>SortXXL application results</title>
+        <style>
+            #wsdi_status{
+                color: #000000;
+                font-size: 1.6em;
+                line-height: 2em;
+                vertical-align: middle;
+            }
+            .connected{
+                color: #40ff40;
+            }
+            .disconnected{
+                color: #ff4040;
+            }
+            
+            #visualization,
+            #info{
+                float: left;
+            }
+            
+            #info{
+                margin: 50px 0 0 50px;
+            }
+            
+            .clearer{
+                clear: both;
+            }
+        </style>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="./jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+            var data = null, v = null, options = null, dCompleted=null, stats;
+            
+            // Load the google visualization API
+            google.load('visualization', '1', {packages: ['corechart']});
+            
+            /**
+             * Get the websocket URL from the page URL
+             */
+            function get_appropriate_ws_url(){
+                var pcol;
+                var u = document.URL;
+
+                /*
+                 * We open the websocket encrypted if this page came on an
+                 * https:// url itself, otherwise unencrypted
+                 */
+
+                if (u.substring(0, 5) == "https") {
+                    pcol = "wss://";
+                    u = u.substr(8);
+                } else {
+                    pcol = "ws://";
+                    if (u.substring(0, 4) == "http")
+                        u = u.substr(7);
+                }
+
+                u = u.split('/');
+
+                return pcol + u[0];
+            }
+            
+            /**
+             * Update the statistics panel view
+             */
+            function updateStatistics(d){
+                stats = google.visualization.data.group(
+                    data,
+                    [{
+                        // we need a key column to group on, but since we want all rows grouped into 1, 
+                        // then it needs a constant value
+                        column: 0,
+                        type: 'number',
+                        modifier: function () {
+                            return 0;
+                        }
+                    }], [{
+                        column: 1,
+                        label: 'Minimum Time',
+                        type: 'number',
+                        aggregation: google.visualization.data.min
+                    },{
+                        column: 1,
+                        label: 'Maximum Time',
+                        type: 'number',
+                        aggregation: google.visualization.data.max
+                    },{
+                        column: 1,
+                        label: 'Total Time',
+                        type: 'number',
+                        aggregation: google.visualization.data.sum
+                    },{
+                        column: 1,
+                        label: 'Average Time',
+                        type: 'number',
+                        aggregation: function (values) {
+                            var total_time = 0, i, total_itens=0;
+                            for (i = 0; i < values.length; i++) {
+                                if(values[i]!=null){
+                                    total_time += values[i];
+                                    total_itens++;
+                                }
+                            }
+                            return total_time/total_itens;
+                        }
+                    }, {
+                        column: 1,
+                        label: 'Standard deviation',
+                        type: 'number',
+                        aggregation: function (values) {
+                            var total_time = 0, i, total_itens=0;
+                            for (i = 0; i < values.length; i++) {
+                                if(values[i]!=null){
+                                    total_time += values[i];
+                                    total_itens++;
+                                }
+                            }
+                            var avg_time = total_time/total_itens, diff = 0, sq_diff_sum = 0;
+                            for (i = 0; i < values.length; i++) {
+                                if(values[i]!=null){
+                                    diff = values[i] - avg_time;
+                                    sq_diff_sum += diff * diff;
+                                }
+                            }
+                            return sq_diff_sum/total_itens;
+                        }
+                    }]
+                );
+                document.getElementById("numberOfElementsToSort").textContent = d.numberOfElementsToSort;
+                document.getElementById("numberOfTests").textContent = d.numberOfTests;
+                document.getElementById("currentTest").textContent = d.currentTest+1;
+                document.getElementById("currentElapsedTime").textContent = Math.round(d.elapsedTime)/1000;
+                document.getElementById("currentMinimumTime").textContent = Math.round(stats.getValue(0, 1)*1000)/1000;
+                document.getElementById("currentMaximumTime").textContent = Math.round(stats.getValue(0, 2)*1000)/1000;
+                document.getElementById("currentTotalTime").textContent = Math.round(stats.getValue(0, 3)*1000)/1000;
+                document.getElementById("averageTime").textContent = Math.round(stats.getValue(0, 4)*1000)/1000;
+                document.getElementById("standardDeviation").textContent = Math.round(stats.getValue(0, 5)*1000)/1000;
+                    
+            }
+            
+            /**
+             * Update the view with the new data
+             */
+            function updateValue(d){
+                if(data.getNumberOfRows()<=d.numberOfTests)
+                    data.addRows(d.numberOfTests);
+                data.setCell(d.currentTest, 0, d.currentTest+1, "Test number "+(d.currentTest+1));
+                data.setCell(d.currentTest, 1, parseFloat(d.elapsedTime)/1000);
+                v.draw(data, options);
+                
+                updateStatistics(d);
+            }
+
+            /**
+             * Get data from web socket
+             */
+            function getValues(){
+                if(dCompleted!=null){
+                    google.visualization.events.removeListener(dCompleted);
+                    dCompleted=null;
+                }
+                
+                var socket_di = new WebSocket(get_appropriate_ws_url(), "sort-xxl-stats");
+                try {
+                    socket_di.onopen = function() {
+                        document.getElementById("wsdi_status").textContent = "SortXXL results";
+                        document.getElementById("wsdi_statusc").className = "connected";
+                    } 
+
+                    socket_di.onmessage =function got_packet(msg) {
+                        updateValue(jQuery.parseJSON(msg.data));
+                        //console.log(d);
+                        //document.getElementById("number").innerHTML += msg.data + "<br/>\n";
+                    } 
+
+                    socket_di.onclose = function(){
+                        document.getElementById("wsdi_status").textContent = "SortXXL connection closed";
+                        document.getElementById("wsdi_statusc").className = "disconnected";
+                    }
+                } catch(exception) {
+                    document.getElementById("wsdi_status").textContent = "SortXXL websocket connection error";
+                    document.getElementById("wsdi_statusc").className = "disconnected";
+                    console.log('Error ' + exception);
+                }
+            }
+            
+            /**
+             * Create and populate the data table.
+             * Create and populate the data table.
+             */
+            function drawVisualization() {
+                data = new google.visualization.DataTable();
+                data.addColumn('number', 'Benchmark');
+                data.addColumn('number', 'Time to sort completion');
+
+                v = new google.visualization.LineChart(document.getElementById('visualization'));
+    
+                //dCompleted = google.visualization.events.addListener(v, 'ready', getValues);
+
+                options = {curveType: "function",
+                    width: 700, 
+                    height: 400,
+                    vAxis: {
+                        title: "Time"
+                    },
+                    hAxis: { 
+                        title: "Test number"
+                    }/*,
+                    animation:{
+                        duration: 100,
+                        easing: 'out'
+                    }*/
+                };
+                v.draw(data, options);
+                getValues();
+            }
+
+            function init(){
+                drawVisualization();
+            }
+
+            google.setOnLoadCallback(init);
+            </script>
+    </head>
+
+    <body>
+        <ul id="wsdi_statusc" class="disconnected"><li><span id="wsdi_status">SortXXL loading...</span></li></ul>
+        <div id="visualization" style="width: 700px; height: 400px;"></div>
+        <div id="info">
+            <p>Number of elements to sort: <span id="numberOfElementsToSort"></span></p>
+            <p>Number of tests: <span id="numberOfTests"></span></p>
+            <p>Current test: <span id="currentTest"></span></p>
+            <p>Current elapsed time: <span id="currentElapsedTime"></span></p>
+            <p>Current minimum time: <span id="currentMinimumTime"></span></p>
+            <p>Current maximum time: <span id="currentMaximumTime"></span></p>
+            <p>Current total GPU time: <span id="currentTotalTime"></span></p>
+            <p>Average execution time: <span id="averageTime"></span></p>
+            <p>Standard deviation: <span id="standardDeviation"></span></p>
+        </div>
+        <div class="clearer"></div>
+    </body>
+</html>

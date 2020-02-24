@@ -1,0 +1,54 @@
+# sortXXL.ggo
+# File with the description of the command line options
+
+	package "sortXXL"
+	version "1.0"
+	purpose "Ordering numbers using CUDA optimized algorithms"
+	usage "For educational proposes only."
+	description "Program for CAD (Computação de Alto Desempenho) @ MEI-CM 2012/2013"
+	
+defgroup "data source" groupdesc="the data source to use" required
+     groupoption "input" i "Text file containing the numbers to sort." group="data source" string typestr="inputFile"
+     groupoption "random" r "Number of numbers to be generated." group="data source" int typestr="numNumbers"
+     groupoption "about" - "Application credits." group="data source" argoptional
+     
+     
+defmode  "sortXXL options"  modedesc="grouping sortXXL options"
+
+modeoption "output" o "Output text file with the sorted numbers."
+	string
+	string typestr="outputFile"
+	mode="sortXXL options"
+	optional
+
+modeoption "benchmark" b "Benchmark mode. Number of times that sortXXL that will execute, presenting the execution time in the end."
+	int
+	mode="sortXXL options"
+	typestr="numTimes"
+	default="1"
+	optional
+
+modeoption "min" m "Minimum value to be sorted."
+	int
+	mode="sortXXL options"
+	typestr="minNumber"
+	optional
+
+modeoption "max" M "Maximum value to be sorted."
+	int
+	mode="sortXXL options"
+	typestr="maxNumber"
+	optional
+
+modeoption "demo" d "Demo mode with the port specification to listen for connections from HTTP clients"
+	int
+	mode="sortXXL options"
+	typestr="portNumber"
+	default="7681"
+	argoptional
+	optional
+
+option "gpu" g "Show graphic card's information."
+	flag off
+	
+

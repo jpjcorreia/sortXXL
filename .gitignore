@@ -1,0 +1,7 @@
+/nbproject/
+/docs/
+*.o
+core.*
+*~
+*.bak
+cudaGen

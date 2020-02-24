@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cuda.toolchain.configuration.debug.647940802">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cuda.toolchain.configuration.debug.647940802" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.fixstars.cuda.toolchain.NVCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cuda.toolchain.configuration.debug.647940802" name="Debug" parent="cuda.toolchain.configuration.debug">
+					<folderInfo id="cuda.toolchain.configuration.debug.647940802." name="/" resourcePath="">
+						<toolChain id="cuda.toolchain.exe.debug.51860983" name="CUDA Toolchain" superClass="cuda.toolchain.exe.debug">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="cuda.toolchain.targetplatform.exe.debug.1396877821" isAbstract="false" name="Linux Release Platform" osList="linux" superClass="cuda.toolchain.targetplatform.exe.debug"/>
+							<builder buildPath="${workspace_loc:/sortXXL/Debug}" id="cuda.toolchain.builder.exe.debug.229258383" managedBuildOn="true" name="Gnu Make Builder.Debug" superClass="cuda.toolchain.builder.exe.debug"/>
+							<tool id="cuda.toolchain.compiler.exe.debug.1414770164" name="NVIDIA CUDA Compiler" superClass="cuda.toolchain.compiler.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="cuda.toolchain.compiler.option.optimization.level.105691154" superClass="cuda.toolchain.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="cuda.toolchain.compiler.option.debugging.level.1104718596" superClass="cuda.toolchain.compiler.option.debugging.level"/>
+								<inputType id="cuda.toolchain.compiler.input.110208929" superClass="cuda.toolchain.compiler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.cpp.compiler.1774645311" name="GCC C++ Compiler" superClass="cuda.toolchain.gnu.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.optimization.level.1490055905" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.1643243750" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.c.compiler.1569294923" name="GCC C Compiler" superClass="cuda.toolchain.gnu.c.compiler">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1174648754" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.1249764574" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1350467626" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.cpp.linker.1790096653" name="NVCC Linker" superClass="cuda.toolchain.gnu.cpp.linker"/>
+							<tool id="cuda.toolchain.gnu.c.linker.950941484" name="NVCC LinkerC" superClass="cuda.toolchain.gnu.c.linker"/>
+							<tool id="cuda.toolchain.gnu.assembler.892058779" name="GCC Assembler" superClass="cuda.toolchain.gnu.assembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1438680796" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.archiver.471645166" name="GCC Archiver" superClass="cuda.toolchain.gnu.archiver"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cuda.toolchain.configuration.release.921077134">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cuda.toolchain.configuration.release.921077134" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.fixstars.cuda.toolchain.NVCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cuda.toolchain.configuration.release.921077134" name="Release" parent="cuda.toolchain.configuration.release">
+					<folderInfo id="cuda.toolchain.configuration.release.921077134." name="/" resourcePath="">
+						<toolChain id="cuda.toolchain.exe.release.559314899" name="CUDA Toolchain" superClass="cuda.toolchain.exe.release">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="cuda.toolchain.targetplatform.exe.debug.800162273" isAbstract="false" name="Linux Release Platform" osList="linux" superClass="cuda.toolchain.targetplatform.exe.debug"/>
+							<builder buildPath="${workspace_loc:/sortXXL/Release}" id="cuda.toolchain.builder.exe.debug.191481040" managedBuildOn="true" name="Gnu Make Builder.Release" superClass="cuda.toolchain.builder.exe.debug"/>
+							<tool id="cuda.toolchain.compiler.exe.debug.736763712" name="NVIDIA CUDA Compiler" superClass="cuda.toolchain.compiler.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.most" id="cuda.toolchain.compiler.option.optimization.level.936481545" superClass="cuda.toolchain.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="cuda.toolchain.compiler.option.debugging.level.1150525137" superClass="cuda.toolchain.compiler.option.debugging.level" value="cuda.toolchain.compiler.option.debugging.level.none" valueType="enumerated"/>
+								<inputType id="cuda.toolchain.compiler.input.1862227612" superClass="cuda.toolchain.compiler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.cpp.compiler.484030605" name="GCC C++ Compiler" superClass="cuda.toolchain.gnu.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.optimization.level.330335929" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.1176309739" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.c.compiler.944363751" name="GCC C Compiler" superClass="cuda.toolchain.gnu.c.compiler">
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.option.optimization.level.1336508110" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.1964052408" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1056854440" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.cpp.linker.2133811557" name="NVCC Linker" superClass="cuda.toolchain.gnu.cpp.linker"/>
+							<tool id="cuda.toolchain.gnu.c.linker.788428415" name="NVCC LinkerC" superClass="cuda.toolchain.gnu.c.linker"/>
+							<tool id="cuda.toolchain.gnu.assembler.1269204036" name="GCC Assembler" superClass="cuda.toolchain.gnu.assembler">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1447283985" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cuda.toolchain.gnu.archiver.142005064" name="GCC Archiver" superClass="cuda.toolchain.gnu.archiver"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="sortXXL.cuda.toolchain.exe.393172855" name="Executable" projectType="cuda.toolchain.exe"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cuda.toolchain.configuration.debug.647940802;cuda.toolchain.configuration.debug.647940802.;cuda.toolchain.gnu.c.compiler.1569294923;cdt.managedbuild.tool.gnu.c.compiler.input.1350467626">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cuda.toolchain.configuration.release.921077134;cuda.toolchain.configuration.release.921077134.;cuda.toolchain.compiler.exe.debug.736763712;cuda.toolchain.compiler.input.1862227612">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cuda.toolchain.configuration.release.921077134;cuda.toolchain.configuration.release.921077134.;cuda.toolchain.gnu.c.compiler.944363751;cdt.managedbuild.tool.gnu.c.compiler.input.1056854440">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cuda.toolchain.configuration.debug.647940802;cuda.toolchain.configuration.debug.647940802.;cuda.toolchain.compiler.exe.debug.1414770164;cuda.toolchain.compiler.input.110208929">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>
